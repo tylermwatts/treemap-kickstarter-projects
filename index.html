@@ -100,19 +100,22 @@
           .attr("y",(d,i)=>13+i*10)
           .text(d=>d)
         
-        const legend = svg.append("g").attr("transform","translate(550,50)")
-        legend.selectAll("g")
-          .data(categories.keys())
+        const legend = svg.append("g").attr("id","legend").attr("transform","translate(250,550)")
+        const legendTiles = legend.selectAll("g")
+          .data(Object.keys(categories))
           .enter()
           .append("g")
-          .attr("transform",(d,i)=>"translate(0,"+i*50+")")
-        legend.append("rect")
-          .attr("id",d=>
-        
-        
-        
-        
-        
+          .attr("transform",(d,i)=>{
+            if (i < 6){
+            
+            }
+          })
+        legendTiles.append("rect")
+          .attr("id",d=>d)
+          .attr("class","legend-rect")
+          .attr("width",10)
+          .attr("height",10)
+          .attr("fill",d=>getCategoryColors(d))
         })
     </script>
     <!-- include the Glitch button to show what the webpage is about and
