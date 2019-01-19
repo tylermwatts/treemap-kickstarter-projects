@@ -17,18 +17,12 @@
     <script>
       var canvas = d3.select("body").append("svg").attr("width", 600).attr("height",600)
       d3.json("https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/kickstarter-funding-data.json", function(data){
-        var treemap = d3.treemap().size([600,600]).nodes(data)
-        var cells = canvas.selectAll(".cell")
-                          .data(treemap).enter()
-                          .append("g")
-                          .attr("class","cell")
-        cells.append("rect")
-             .attr("x", d=>d.x)
-             .attr("y", d=>d.y)
-             .attr("width", d=>d.dx)
-             .attr("height", d=>d.dy)
-             .attr("fill","black")
-      })        
+        const root = d3.heirarchy(data);
+        root.sum(d=>d.value);
+        const treemap = d3.treemap(root);
+        
+        canvas.selectAll("rect").data(treemap).enter().append("rect").attr("x",d=>d.x).attr("y",d=>d.y)
+      })
     </script>
     <!-- include the Glitch button to show what the webpage is about and
           to make it easier for folks to view source and remix -->
