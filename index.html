@@ -13,6 +13,18 @@
     <h1 id="title">The 100 Most Backed Kickstarter Projects</h1>
     <h3 id="description">Grouped by category</h3>
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <svg width="960" height="600"></svg>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script>
+      d3.json("https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/kickstarter-funding-data.json", data=>{
+        const root = d3.heirarchy(data);
+        const treemapLayout = d3.treemap();
+        treemapLayout.size([960,600]).paddingOuter(10);
+        root.sum(d=>d.value)
+        treemapLayout(root);
+        
+      })
+    </script>
     <!-- include the Glitch button to show what the webpage is about and
           to make it easier for folks to view source and remix -->
     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
