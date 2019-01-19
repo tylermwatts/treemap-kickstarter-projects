@@ -8,18 +8,26 @@
     
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
-    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
   </head>  
   <body>
+    <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
     <h1 id="title">The 100 Most Backed Kickstarter Projects</h1>
     <h3 id="description">Grouped by category</h3>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script>
       var canvas = d3.select("body").append("svg").attr("width", 600).attr("height",600)
       d3.json("https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/kickstarter-funding-data.json", function(data){
-        var treemap = d3.layout.treemap().size([600,600]).nodes(data)
-        console.log(treemap)
-        
+        var treemap = d3.treemap().size([600,600]).nodes(data)
+        var cells = canvas.selectAll(".cell")
+                          .data(treemap).enter()
+                          .append("g")
+                          .attr("class","cell")
+        cells.append("rect")
+             .attr("x", d=>d.x)
+             .attr("y", d=>d.y)
+             .attr("width", d=>d.dx)
+             .attr("height", d=>d.dy)
+             .attr("fill","black")
       })        
     </script>
     <!-- include the Glitch button to show what the webpage is about and
