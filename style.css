@@ -1,3 +1,13 @@
 body {
   text-align: center;
 }
+
+.tile {
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.tile-text{
+  text-align: left;
+  font-size: 
+}

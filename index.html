@@ -105,9 +105,9 @@
           .data(root.leaves())
           .enter()
           .append("text")
+          .attr("class","tile-text")
           .attr("x",d=>d.x0+50)
-          .attr("y",d=>d.y0)
-          .attr("width",d=>d.x1-d.x0)
+          .attr("y",d=>d.y0+20)
           .text(d=>d.data.name)
       })
     </script>
