@@ -2,13 +2,14 @@ body {
   text-align: center;
 }
 
+svg {
+  font: 10px sans-serif;
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
 .tile {
   stroke: black;
   stroke-width: 1px;
 }
-
-/* .tile-text{
-  text-align: left;
-  font-size: 12px;
-  word-wrap: break-word;
-} */
