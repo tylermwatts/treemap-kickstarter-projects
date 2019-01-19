@@ -13,17 +13,20 @@
     <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
     <h1 id="title">The 100 Most Backed Kickstarter Projects</h1>
     <h3 id="description">Grouped by category</h3>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
     <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
     <script src="https://d3js.org/d3-hierarchy.v1.min.js"></script>
     <script>
       d3.json("https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/kickstarter-funding-data.json").then(function(data){
-        var canvas = d3.select("body").append("svg").attr("width", 600).attr("height",600)
-        const root = d3.heirarchy(data);
-        root.sum(d=>d.value);
-        const treemap = d3.treemap(root);
-        canvas.selectAll("rect").data(treemap).enter().append("rect").attr("x",d=>d.x).attr("y",d=>d.y)
+        const canvas = d3.select("body").append("svg").attr("width", 600).attr("height",600)
+        const root = d3.hierarchy(data)
+        root.sum(d=>d.value)
+        const treemap = d3.treemap().size([600,600]);
+        const nodes = treemap(root).sum(function(d) { return d.value; })
+                                   .sort(function(a, b) { return b.height - a.height || b.value - a.value; })
+                                   .descendants();
+        canvas.selectAll("rect").data(nodes).enter().append("rect").attr("x",d=>d.x).attr("y",d=>d.y).style("fill","red")
       })
     </script>
     <!-- include the Glitch button to show what the webpage is about and
