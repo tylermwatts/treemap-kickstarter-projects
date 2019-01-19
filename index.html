@@ -86,6 +86,17 @@
         return wordArr.join("\n")
       }
       
+      const formatValue = value => {
+        
+      }
+      
+      let tooltip = d3
+          .select("body")
+          .append("div")
+          .attr("id","tooltip")
+          .attr("class", "tooltip")
+          .style("opacity", 0);
+      
       d3.json("https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/kickstarter-funding-data.json").then(function(data){
         const root = d3.hierarchy(data);
         root.sum(d=>d.value)
@@ -98,8 +109,19 @@
           .enter().append("g")
           .attr("class","group")
           .attr("transform",d=>"translate("+d.x0+","+d.y0+")")
-          .on("mouseover",d=>{
-            
+          .on("mouseover", function(d) {
+            tooltip
+              .style("opacity",1);
+            tooltip
+              .html(`${d.data.name}<br/>Value: $${d.data.value}`)
+              .style("left", d3.event.pageX + 20 + "px")
+              .style("top", d3.event.pageY + 20 + "px")
+              .attr("data-name", d.data.name)
+              .attr("data-value", d.data.value)
+          })
+          .on("mouseout", function(d) {
+            tooltip
+              .style("opacity", 0);
           })
         const tile = cell.append("rect")
           .attr("id",d=>d.data.id)

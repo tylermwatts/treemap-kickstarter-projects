@@ -13,3 +13,17 @@ svg {
   stroke: black;
   stroke-width: 1px;
 }
+
+.tooltip 
+{	
+    position: absolute;			
+    text-align: center;			
+    width: 200px;					
+    height: auto;					
+    padding: 2px;				
+    font-family: 'Slabo 12px', serif;
+    background: lavender;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
