@@ -14,11 +14,6 @@ svg {
   stroke-width: 1px;
 }
 
-.tile-text{
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .tooltip 
 {	
     position: absolute;			

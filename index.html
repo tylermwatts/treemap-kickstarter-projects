@@ -101,6 +101,18 @@
           .text(d=>d)
         
         const legend = svg.append("g").attr("transform","translate(550,50)")
+        legend.selectAll("g")
+          .data(categories.keys())
+          .enter()
+          .append("g")
+          .attr("transform",(d,i)=>"translate(0,"+i*50+")")
+        legend.append("rect")
+          .attr("id",d=>
+        
+        
+        
+        
+        
         })
     </script>
     <!-- include the Glitch button to show what the webpage is about and
