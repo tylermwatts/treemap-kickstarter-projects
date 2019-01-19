@@ -35,7 +35,40 @@
           case "Sound":
             return "orange";
             break;
-          case "Television
+          case "Television":
+            return "brown";
+            break;
+          case "Narrative Film":
+            return "purple";
+            break;
+          case "Web":
+            return "pink";
+            break;
+          case "Hardware":
+            return "skyblue";
+            break;
+          case "Games":
+            return "lightgreen"
+            break;
+          case "3D Printing":
+            return "gray";
+            break;
+          case "Technology":
+            return "tan";
+            break;
+          case "Wearables":
+            return "violet";
+            break;
+          case "Sculpture":
+            return "#FF00EE";
+            break;
+          case "Apparel":
+            return "#00FFAA";
+            break;
+          case "Food":
+            return "#FAFAA0";
+            break;
+          case "Art":
           default: return "black";
         }
       }
@@ -43,10 +76,10 @@
       d3.json("https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/kickstarter-funding-data.json").then(function(data){
         const root = d3.hierarchy(data);
         root.sum(d=>d.value)
-        const treemap = d3.treemap().size([500,500])
+        const treemap = d3.treemap().size([700,500])
         treemap(root)
         console.log(root.leaves())
-        const svg = d3.select("body").append("svg").attr("width",600).attr("height",800)
+        const svg = d3.select("body").append("svg").attr("width",800).attr("height",800)
         svg.selectAll("rect")
           .data(root.leaves())
           .enter().append("rect")
