@@ -18,52 +18,29 @@
     <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
     <script src="https://d3js.org/d3-hierarchy.v1.min.js"></script>
     <script>
-      const categories = [
-        { "Product Design": {color: "blue"} },
-        { "Tabletop Games": {color: "red"} },
-        { "Gaming Hardware": {color: "green"} },
-        { "Video Games": {color: "yellow"} },
-        { "Sound": {color: "orange"} },
-        { "Television": {color: "brown"} },
-        { "Narrative Film": {color: "purple"} },
-        { "Web" : {color: "pink"} },
-        { "Hardware": {color: "skyblue"} },
-        { "Games": {color: "lightgreen"} },
-        { "3D Printing": {color: "gray"} },
-        { "Technology": {color: "tan"} },
-        { "Wearables":
-      ]
+      const categories = {
+        "Product Design": {color: "blue"},
+        "Tabletop Games": {color: "red"},
+        "Gaming Hardware": {color: "green"},
+        "Video Games": {color: "yellow"},
+        "Sound": {color: "orange"},
+        "Television": {color: "brown"},
+        "Narrative Film": {color: "purple"},
+        "Web" : {color: "pink"},
+        "Hardware": {color: "skyblue"},
+        "Games": {color: "lightgreen"},
+        "3D Printing": {color: "gray"},
+        "Technology": {color: "tan"},
+        "Wearables": {color: "violet"},
+        "Sculpture": {color: "#FF00EE"},
+        "Apparel": {color: "#00FFAA"},
+        "Food": {color: "#FAFAA0"},
+        "Art": {color: "#3C00AF"},
+        "Gadgets": {color: "#20FF22"},
+        "Drinks": {color: "#C5CF00"}
+      }
       const getCategoryColors = category => {
-        
-          case "3D Printing":
-            return "gray";
-            break;
-          case "Technology":
-            return "tan";
-            break;
-          case "Wearables":
-            return "violet";
-            break;
-          case "Sculpture":
-            return "#FF00EE";
-            break;
-          case "Apparel":
-            return "#00FFAA";
-            break;
-          case "Food":
-            return "#FAFAA0";
-            break;
-          case "Art":
-            return "#3C00AF";
-            break;
-          case "Gadgets":
-            return "#20FF22"
-            break;
-          case "Drinks":
-            return "#C5CF00"
-            break;
-          default: return "black";
-        }
+        return categories[category].color;
       }
       
       const formatValue = value => {
@@ -124,8 +101,7 @@
           .text(d=>d)
         
         const legend = svg.append("g").attr("transform","translate(550,50)")
-        legend.selectAll("g").data(
-      })
+        })
     </script>
     <!-- include the Glitch button to show what the webpage is about and
           to make it easier for folks to view source and remix -->
