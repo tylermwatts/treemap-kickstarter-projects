@@ -81,13 +81,8 @@
         }
       }
       
-      const formatText = text => {
-        let wordArr = text.split(/\s/)
-        return wordArr.join("\n")
-      }
-      
       const formatValue = value => {
-        
+        return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
       }
       
       let tooltip = d3
@@ -113,7 +108,7 @@
             tooltip
               .style("opacity",1);
             tooltip
-              .html(`${d.data.name}<br/>Value: $${d.data.value}`)
+              .html(`${d.data.name}<br/>Value: $${formatValue(d.data.value)}`)
               .style("left", d3.event.pageX + 20 + "px")
               .style("top", d3.event.pageY + 20 + "px")
               .attr("data-name", d.data.name)
@@ -136,12 +131,14 @@
         cell.append("text")
           .attr("class","tile-text")
           .selectAll("tspan")
-          .data(d=>d.data.name.split(" "))
+          .data(d=>d.data.name.split(/(?=[A-Z][^A-Z])/g))
           .enter()
           .append("tspan")
           .attr("x",4)
           .attr("y",(d,i)=>13+i*10)
           .text(d=>d)
+        
+        const legend = svg.append("g")
       })
     </script>
     <!-- include the Glitch button to show what the webpage is about and
