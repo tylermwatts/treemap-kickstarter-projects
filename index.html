@@ -106,8 +106,11 @@
           .enter()
           .append("g")
           .attr("transform",(d,i)=>{
-            if (i < 6){
-            
+            if (i < 9){
+              return "translate(0,"+i*20+")"
+            }
+            else {
+              return "translate(150,"+(i-9)*20+")"
             }
           })
         legendTiles.append("rect")
@@ -116,6 +119,10 @@
           .attr("width",10)
           .attr("height",10)
           .attr("fill",d=>getCategoryColors(d))
+        legendTiles.append("text")
+          .attr("class","legend-text")
+          .attr("x",5)
+          .attr("y"
         })
     </script>
     <!-- include the Glitch button to show what the webpage is about and
