@@ -32,10 +32,15 @@
       
       d3.json("https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/kickstarter-funding-data.json").then(function(data){
         const root = d3.hierarchy(data);
-        root.sum(d=>d.value)
-        
+        root.sum(function(d) { return d.value; })
+            .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
+        const treemap = d3.treemap(root).size([600,600]).round(true)
         const svg = d3.select("body").append("svg").attr("width",600).attr("height",600)
-        
+        svg.selectAll("g")
+          .data(treemap)
+          .enter()
+          .append("g")
+          .attr("transform",`translate(${d=>d.x0},${d=>d.y0})`)
       })
     </script>
     <!-- include the Glitch button to show what the webpage is about and
