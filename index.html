@@ -70,7 +70,7 @@
             tooltip
               .style("opacity",1);
             tooltip
-              .html(`${d.data.name}<br/>Value: $${formatValue(d.data.value)}`)
+              .html(`Name: ${d.data.name}<br/>Category: ${d.data.category}<br/>Value: $${formatValue(d.data.value)}`)
               .style("left", d3.event.pageX + 20 + "px")
               .style("top", d3.event.pageY + 20 + "px")
               .attr("data-name", d.data.name)
@@ -115,14 +115,15 @@
           })
         legendTiles.append("rect")
           .attr("id",d=>d)
-          .attr("class","legend-rect")
+          .attr("class","legend-item")
           .attr("width",10)
           .attr("height",10)
           .attr("fill",d=>getCategoryColors(d))
         legendTiles.append("text")
           .attr("class","legend-text")
-          .attr("x",5)
-          .attr("y"
+          .attr("x",15)
+          .attr("y",10)
+          .text(d=>d)
         })
     </script>
     <!-- include the Glitch button to show what the webpage is about and
