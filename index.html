@@ -18,38 +18,23 @@
     <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
     <script src="https://d3js.org/d3-hierarchy.v1.min.js"></script>
     <script>
+      const categories = [
+        { "Product Design": {color: "blue"} },
+        { "Tabletop Games": {color: "red"} },
+        { "Gaming Hardware": {color: "green"} },
+        { "Video Games": {color: "yellow"} },
+        { "Sound": {color: "orange"} },
+        { "Television": {color: "brown"} },
+        { "Narrative Film": {color: "purple"} },
+        { "Web" : {color: "pink"} },
+        { "Hardware": {color: "skyblue"} },
+        { "Games": {color: "lightgreen"} },
+        { "3D Printing": {color: "gray"} },
+        { "Technology": {color: "tan"} },
+        { "Wearables":
+      ]
       const getCategoryColors = category => {
-        switch(category){
-          case "Product Design":
-            return "blue";
-            break;
-          case "Tabletop Games":
-            return "red";
-            break;
-          case "Gaming Hardware":
-            return "green";
-            break;
-          case "Video Games":
-            return "yellow";
-            break;
-          case "Sound":
-            return "orange";
-            break;
-          case "Television":
-            return "brown";
-            break;
-          case "Narrative Film":
-            return "purple";
-            break;
-          case "Web":
-            return "pink";
-            break;
-          case "Hardware":
-            return "skyblue";
-            break;
-          case "Games":
-            return "lightgreen"
-            break;
+        
           case "3D Printing":
             return "gray";
             break;
@@ -138,7 +123,8 @@
           .attr("y",(d,i)=>13+i*10)
           .text(d=>d)
         
-        const legend = svg.append("g")
+        const legend = svg.append("g").attr("transform","translate(550,50)")
+        legend.selectAll("g").data(
       })
     </script>
     <!-- include the Glitch button to show what the webpage is about and
