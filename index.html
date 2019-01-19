@@ -21,9 +21,12 @@
       const getCategoryColors = category => {
         switch(category){
           case "Product Design":
-            return blue;
+            return "blue";
             break;
-          
+          case "Tabletop Games":
+            return "red";
+            break;
+          default: return "black";
         }
       }
       
@@ -35,18 +38,17 @@
         const nodes = treemap(root).sum(function(d) { return d.value; })
                                    .sort(function(a, b) { return b.height - a.height || b.value - a.value; })
                                    .descendants();
+        console.log(nodes)
         canvas.selectAll("rect")
           .data(nodes)
           .enter().append("rect")
           .attr("class","tile")
-          .attr("data-name",d=>{d.name})
-          .attr("data-category",d=>{d.category})
+          .attr("data-name",d=>d.name)
+          .attr("data-category",d=>d.category)
           .attr("transform", d => `translate(${d.x0},${d.y0})`)
           .attr("width",d=>d.x1 - d.x0)
           .attr("height",d=>d.y1 - d.y0)
-          .attr("fill",d=>{
-            
-          })
+          .attr("fill",d=>getCategoryColors(d.category))
       })
     </script>
     <!-- include the Glitch button to show what the webpage is about and
