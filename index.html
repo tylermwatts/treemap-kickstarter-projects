@@ -84,7 +84,7 @@
       d3.json("https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/kickstarter-funding-data.json").then(function(data){
         const root = d3.hierarchy(data);
         root.sum(d=>d.value)
-        const treemap = d3.treemap().size([700,500])
+        const treemap = d3.treemap().size([700,500]).padding(1)
         treemap(root)
         console.log(root.leaves())
         const svg = d3.select("body").append("svg").attr("width",800).attr("height",800)
