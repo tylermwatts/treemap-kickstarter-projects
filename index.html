@@ -81,6 +81,10 @@
         }
       }
       
+      const formatText = text => {
+        return text.replace(" ","\n");
+      }
+      
       d3.json("https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/kickstarter-funding-data.json").then(function(data){
         const root = d3.hierarchy(data);
         root.sum(d=>d.value)
@@ -99,7 +103,7 @@
           .attr("x",d=>d.x0 + 50)
           .attr("y",d=>d.y0)
           .attr("width",d=>d.x1 - d.x0)
-          .attr("height",d=>d.y1 -d.y0)
+          .attr("height",d=>d.y1 - d.y0)
           .attr("fill",d=>getCategoryColors(d.data.category))
         g.selectAll("text")
           .data(root.leaves())
@@ -108,7 +112,9 @@
           .attr("class","tile-text")
           .attr("x",d=>d.x0+50)
           .attr("y",d=>d.y0+20)
-          .text(d=>d.data.name)
+          .attr("height",d=>d.y1-d.y0)
+          .attr("width",d=>d.x1-d.x0)
+          .text(d=>formatText(d.data.name))
       })
     </script>
     <!-- include the Glitch button to show what the webpage is about and

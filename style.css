@@ -9,5 +9,6 @@ body {
 
 .tile-text{
   text-align: left;
-  font-size: 
+  font-size: 12px;
+  word-wrap: break-word;
 }
